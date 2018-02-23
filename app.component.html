@@ -1,28 +1,36 @@
+<h1>Turmrechnen with Angular</h1>
+
 <table>
+
   <tr>
+
     <td>Start Value:</td>
-    <td><input [(ngModel)]="startValue" /></td>
+    <td><input type="number" [(ngModel)]="startValue"></td>
   </tr>
+
   <tr>
-    <td>Height:</td>
-    <td>
-      <input [(ngModel)]="height" />
-      <span class="error-message" *ngIf="height < 2">
-        Height must be >= 2
-      </span>
-    </td>
+    <td>Height</td>
+    <td><input type="number" [(ngModel)]="height"></td>
+    <td style="color:red" *ngIf="height<2">Height must be >= 2</td>
   </tr>
+
   <tr>
     <td>&nbsp;</td>
-    <td><button (click)="calculate()" [disabled]="height < 2">Calculate</button></td>
+    <td><input (click)="calculate()" type="button" value="Calculate" [disabled]="height<2"></td>
+  </tr>
+
 </table>
 
 <table>
-  <tr *ngFor="let line of result">
-    <td class="right">{{ line.startValue }}</td>
-    <td>{{ line.operator }}</td>
-    <td>{{ line.parameter }}</td>
-    <td>&nbsp;=&nbsp;</td>
-    <td>{{ line.result }}</td>
+
+  <tr *ngFor="let step of result">
+
+    <td style="text-align:right">{{step[0]}}</td>
+    <td>{{step[1]}}</td>
+    <td style="text-align:right">{{step[2]}}</td>
+    <td>=</td>
+    <td>{{step[3]}}</td>
+
   </tr>
+
 </table>
